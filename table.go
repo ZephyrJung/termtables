@@ -155,7 +155,7 @@ func (t *Table) AddSeparator() {
 }
 
 // AddRow adds the supplied items as cells in one row of the table.
-func (t *Table) AddRow(items ...interface{}) *Row {
+func (t *Table) AddRow(items []interface{}) *Row {
 	row := CreateRow(items)
 	t.elements = append(t.elements, row)
 	return row
@@ -168,8 +168,10 @@ func (t *Table) AddTitle(title interface{}) {
 }
 
 // AddHeaders supplies column headers for the table.
-func (t *Table) AddHeaders(headers ...interface{}) {
-	t.headers = append(t.headers, headers...)
+func (t *Table) AddHeaders(headers []interface{}) {
+	for _,head:=range headers{
+		t.headers = append(t.headers, head)
+	}
 }
 
 // SetAlign changes the alignment for elements in a column of the table;
